@@ -1,0 +1,87 @@
+---
+title: Configuration
+description: Detailed configuration options for websites and hosting settings
+---
+
+## Hosting Configuration
+
+Configure your hosting environment to match your website's requirements. Our platform supports multiple PHP versions, databases, and server configurations.
+
+<Columns cols={2}>
+  <Card title="PHP Settings" icon="code" href="#php">
+    Configure PHP version, memory limits, and extensions.
+  </Card>
+  <Card title="Database Setup" icon="database" href="#database">
+    Set up MySQL or PostgreSQL databases with ease.
+  </Card>
+</Columns>
+
+## Security Settings
+
+Enhance your website's security with SSL certificates, firewall rules, and access controls.
+
+<Tabs>
+  <Tab title="SSL Certificates" icon="lock">
+    Enable HTTPS with Let's Encrypt or custom certificates.
+  </Tab>
+  <Tab title="Firewall" icon="shield">
+    Configure IP whitelisting and security rules.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="nginx,apache">
+  ```nginx
+  server {
+    listen 443 ssl;
+    server_name example.com;
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+    
+    location / {
+      proxy_pass http://localhost:3000;
+    }
+  }
+  ```
+  ```apache
+  <VirtualHost *:443>
+    ServerName example.com
+    SSLEngine on
+    SSLCertificateFile /path/to/cert.pem
+    SSLCertificateKeyFile /path/to/key.pem
+    
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+  </VirtualHost>
+  ```
+</CodeGroup>
+
+## Performance Tuning
+
+Optimize your website's performance with caching, compression, and content delivery network integration.
+
+<ExpandableGroup>
+  <Expandable title="Caching Strategies" default-open="true">
+    Implement browser caching, server-side caching, and CDN integration.
+  </Expandable>
+  <Expandable title="Compression" default-open="false">
+    Enable GZIP compression for faster content delivery.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">Regular performance monitoring helps identify and resolve bottlenecks quickly.</Callout>
+
+## Backup and Recovery
+
+Set up automated backups and recovery procedures to protect your data.
+
+<Steps>
+  <Step title="Schedule Backups" icon="clock">
+    Configure daily, weekly, or monthly backup schedules.
+  </Step>
+  <Step title="Test Restorations" icon="rotate-ccw">
+    Regularly test backup restoration to ensure data integrity.
+  </Step>
+  <Step title="Monitor Storage" icon="hard-drive">
+    Keep track of backup storage usage and retention policies.
+  </Step>
+</Steps>

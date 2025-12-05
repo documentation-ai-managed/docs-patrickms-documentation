@@ -1,0 +1,78 @@
+---
+title: API Guide
+description: Comprehensive guide to using Nova Gestion's API for programmatic access
+---
+
+## API Overview
+
+The Nova Gestion API allows developers to programmatically manage websites, domains, and hosting settings. Built on REST principles, our API provides secure and efficient access to all platform features.
+
+## Authentication
+
+All API requests require authentication using API keys. Generate your keys in the dashboard under the API settings section.
+
+<Callout kind="danger">Keep your API keys secure and never share them in public repositories.</Callout>
+
+<CodeGroup tabs="cURL,Python">
+  ```bash
+  curl -X GET "https://api.novagestion.eu/v1/websites" \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json"
+  ```
+  ```python
+  import requests
+  
+  headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+  }
+  
+  response = requests.get("https://api.novagestion.eu/v1/websites", headers=headers)
+  print(response.json())
+  ```
+</CodeGroup>
+
+## Core Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/websites` | GET | List all websites |
+| `/websites` | POST | Create new website |
+| `/websites/{id}` | GET | Get website details |
+| `/websites/{id}` | PUT | Update website |
+| `/websites/{id}` | DELETE | Delete website |
+
+## Error Handling
+
+Our API returns standard HTTP status codes and detailed error messages to help with debugging.
+
+<Tabs>
+  <Tab title="Success Codes" icon="check-circle">
+    200 OK, 201 Created, 204 No Content
+  </Tab>
+  <Tab title="Error Codes" icon="x-circle">
+    400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error
+  </Tab>
+</Tabs>
+
+<Expandable title="Rate Limiting" default-open="false">
+  API requests are limited to 1000 per hour per API key. Monitor your usage in the dashboard.
+</Expandable>
+
+## Webhooks
+
+Set up webhooks to receive real-time notifications about website events and updates.
+
+<Steps>
+  <Step title="Configure URL" icon="link">
+    Provide the endpoint URL where notifications should be sent.
+  </Step>
+  <Step title="Select Events" icon="bell">
+    Choose which events trigger webhook notifications.
+  </Step>
+  <Step title="Test Integration" icon="check">
+    Send test notifications to verify your endpoint.
+  </Step>
+</Steps>
+
+<Callout kind="info">Webhook payloads include detailed information about the event and affected resources.</Callout>

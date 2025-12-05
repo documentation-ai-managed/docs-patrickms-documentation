@@ -1,0 +1,100 @@
+---
+title: Advanced Features
+description: Explore advanced capabilities and customization options
+---
+
+## Custom Domains and SSL
+
+Manage multiple domains with automatic SSL certificate provisioning and renewal.
+
+<Columns cols={3}>
+  <Card title="Domain Management" icon="globe" href="#domains">
+    Add and manage custom domains with DNS configuration.
+  </Card>
+  <Card title="SSL Automation" icon="lock" href="#ssl">
+    Automatic SSL certificate generation and renewal.
+  </Card>
+  <Card title="CDN Integration" icon="cloud" href="#cdn">
+    Integrate with content delivery networks for global performance.
+  </Card>
+</Columns>
+
+## Analytics and Monitoring
+
+Gain insights into your website's performance with comprehensive analytics and monitoring tools.
+
+<Tabs>
+  <Tab title="Traffic Analytics" icon="bar-chart-3">
+    Monitor visitor traffic, sources, and behavior patterns.
+  </Tab>
+  <Tab title="Performance Monitoring" icon="activity">
+    Track page load times, uptime, and error rates.
+  </Tab>
+  <Tab title="Security Logs" icon="shield-check">
+    Review security events and potential threats.
+  </Tab>
+</Tabs>
+
+## API Integrations
+
+Connect your websites with third-party services and platforms through our extensive API.
+
+<CodeGroup tabs="JavaScript,PHP">
+  ```javascript
+  const novagestion = require('novagestion-api');
+  
+  const client = new novagestion.Client({
+    apiKey: 'YOUR_API_KEY'
+  });
+  
+  client.websites.list().then(websites => {
+    console.log('Websites:', websites);
+  });
+  ```
+  ```php
+  <?php
+  require 'vendor/autoload.php';
+  
+  use NovaGestion\API\Client;
+  
+  $client = new Client('YOUR_API_KEY');
+  $websites = $client->websites()->list();
+  echo 'Websites: ' . json_encode($websites);
+  ?>
+  ```
+</CodeGroup>
+
+<Callout kind="info">Our SDKs support multiple programming languages for seamless integration.</Callout>
+
+## Custom Scripting
+
+Execute custom scripts and automation tasks directly on your hosting environment.
+
+<Expandable title="Cron Jobs" default-open="false">
+  Schedule automated tasks using cron expressions for maintenance and updates.
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="Environment Variables" default-open="false">
+    Configure custom environment variables for your applications.
+  </Expandable>
+  <Expandable title="SSH Access" default-open="false">
+    Secure shell access for advanced server management.
+  </Expandable>
+</ExpandableGroup>
+
+## Troubleshooting
+
+Common issues and their solutions for advanced users.
+
+<Steps>
+  <Step title="Check Logs" icon="file-text">
+    Review server logs for error messages and debugging information.
+  </Step>
+  <Step title="Test Connectivity" icon="wifi">
+    Verify network connectivity and DNS resolution.
+  </Step>
+  <Step title="Clear Cache" icon="trash-2">
+    Clear browser and server caches to resolve caching issues.
+  </Step>
+</Steps>

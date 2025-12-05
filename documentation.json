@@ -1,0 +1,79 @@
+{
+  "name": "Nova Gestion Documentation",
+  "initialRoute": "introduction",
+  "primaryColor": "#3B82F6",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              },
+              {
+                "title": "Getting Started",
+                "path": "getting-started",
+                "icon": "play"
+              }
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "icon": "lightbulb",
+            "pages": [
+              {
+                "title": "API Guide",
+                "path": "api-guide",
+                "icon": "code"
+              },
+              {
+                "title": "Configuration",
+                "path": "configuration",
+                "icon": "settings"
+              }
+            ]
+          },
+          {
+            "group": "Advanced",
+            "icon": "zap",
+            "pages": [
+              {
+                "title": "Advanced Features",
+                "path": "advanced-features",
+                "icon": "cpu"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "terminal",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "openapi": "openapi.yaml"
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  }
+}

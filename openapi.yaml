@@ -1,0 +1,172 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Nova Gestion API
+  license:
+    name: MIT
+servers:
+  - url: https://api.novagestion.eu/v1
+paths:
+  /websites:
+    get:
+      summary: List all websites
+      operationId: listWebsites
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An paged array of websites
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Websites'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a website
+      operationId: createWebsites
+      responses:
+        201:
+          description: Website creation successful
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /websites/{websiteId}:
+    get:
+      summary: Info for a specific website
+      operationId: showWebsiteById
+      parameters:
+        - name: websiteId
+          in: path
+          required: true
+          description: The id of the website to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Website details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Websites'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update a website
+      operationId: updateWebsite
+      responses:
+        200:
+          description: Website updated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a website
+      operationId: deleteWebsite
+      responses:
+        204:
+          description: Website deleted successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /domains:
+    get:
+      summary: List all domains
+      operationId: listDomains
+      responses:
+        200:
+          description: Domains retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domains'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Register a domain
+      operationId: registerDomain
+      responses:
+        201:
+          description: Domain registration successful
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Website:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        domain:
+          type: string
+    Websites:
+      type: array
+      items:
+        $ref: '#/components/schemas/Website'
+    Domain:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+    Domains:
+      type: array
+      items:
+        $ref: '#/components/schemas/Domain'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
